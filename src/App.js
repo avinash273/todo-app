@@ -3,11 +3,12 @@ import './App.css';
 import React, { Component} from "react";
 import FirstComponent from './components/learning-examples/FirstComponent';
 import SecondComponent from './components/learning-examples/SecondComponent';
+import Counter from "./components/learning-examples/counter/counter";
 class App extends Component {
   render(){
     return (
       <div className="App">
-          <LearningComponents></LearningComponents>
+          <Counter></Counter>
       </div>
     );
   }
@@ -20,6 +21,7 @@ class LearningComponents extends Component {
                 My Hello World
                 <FirstComponent></FirstComponent>
                 <SecondComponent></SecondComponent>
+                <Counter></Counter>
             </div>
         );
     }
