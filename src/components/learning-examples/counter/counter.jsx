@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './counter.css';
-
+// This is a goof example of states and props
 function Counter() {
     return (
         <div className={"counter"}>
@@ -15,4 +15,4 @@ function Counter() {
 
 }
 
-export default Counter;
+export default Couter;
