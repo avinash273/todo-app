@@ -11,6 +11,7 @@ function Counter() {
 
     function increment(){
         console.log("increment");
+        console.log("increment");
     }
 
 }
