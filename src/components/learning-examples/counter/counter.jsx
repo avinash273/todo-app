@@ -3,48 +3,84 @@ import './counter.css';
 import PropTypes from "prop-types";
 
 class Counter extends Component {
-    render() {
-        return (
-            <div className="counter">
-                <CounterButton by={1}/>
-                <CounterButton by={5}/>
-                <CounterButton by={10}/>
-                <CounterButton by={15}/>
-            </div>
-        );
-    }
-}
 
-
-// This is a good example of states and props
-class CounterButton extends Component {
-    //Step 1. Define the intial state in a constructor
     constructor() {
         super();
         this.state = {
             counter: 0
         }
-        // this.increment = this.increment.bind(this);
+        this.increment = this.increment.bind(this);
     }
 
-    //Step 2. Update the state here
-    increment = () => {
-        console.log("increment");
-        this.setState({
-            counter: this.state.counter + this.props.by
-        });
+    increment = (by) => {
+        console.log(`increment from parent -  ${by}`);
+        this.setState(
+            (prevState) => {
+                return {counter: prevState.counter + by}
+            }
+        );
+    }
+
+    decrement = (by) => {
+        console.log(`increment from parent -  ${by}`);
+        this.setState(
+            (prevState) => {
+                return {counter: prevState.counter - by}
+            }
+        );
+    }
+
+    render() {
+        return (
+            <div className="counter">
+                <CounterButton by={1} incrementMethod={this.increment} decrementMethod={this.decrement}/>
+                <CounterButton by={5} incrementMethod={this.increment} decrementMethod={this.decrement}/>
+                <CounterButton by={10} incrementMethod={this.increment} decrementMethod={this.decrement}/>
+                <CounterButton by={15} incrementMethod={this.increment} decrementMethod={this.decrement}/>
+                <span className={"count"}>
+                    {this.state.counter}
+                </span>
+            </div>
+        );
+    }
+}
+
+class CounterButton extends Component {
+    constructor() {
+        super();
+        this.state = {
+            counter: 0
+        }
     }
 
     render = () => {
         return (
             <div className={"counter"}>
                 <button onClick={this.increment}>+{this.props.by}</button>
-                {/*Step 3: use the value*/}
+                <button onClick={this.decrement}>-{this.props.by}</button>
                 <span className={"count"}>
                     {this.state.counter}
                 </span>
             </div>
         );
+    }
+
+    increment = () => {
+        console.log("increment from parent");
+        this.setState({
+            counter: this.state.counter + this.props.by
+        });
+
+        this.props.incrementMethod(this.props.by);
+    }
+
+    decrement = () => {
+        console.log("increment from parent");
+        this.setState({
+            counter: this.state.counter - this.props.by
+        });
+
+        this.props.decrementMethod(this.props.by);
     }
 
 
