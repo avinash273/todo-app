@@ -3,7 +3,7 @@ import './App.css';
 import React, { Component} from "react";
 import FirstComponent from './components/learning-examples/FirstComponent';
 import SecondComponent from './components/learning-examples/SecondComponent';
-import Counter from "./components/learning-examples/counter/counter";
+import Counter from "./components/counter/counter";
 
 
 class App extends Component {
